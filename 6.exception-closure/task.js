@@ -1,9 +1,10 @@
 ﻿function parseCount(quantityОfGoods){
-    if(isNaN(Number.parseFloat(quantityОfGoods))){
-        const error = new Error ('Невалидное значение')
+    let result = Number.parseFloat(quantityОfGoods);
+    if(isNaN(result)){
+        const error = new Error ('Невалидное значение');
         throw error;
     }
-    return Number.parseFloat(quantityОfGoods);
+    return result;
 }
 
 function validateCount(quantityОfGoods){
@@ -25,20 +26,19 @@ class Triangle {
             throw error;
         }
     }
-
+  
     get perimeter(){
         return this.a + this.b + this.c;
     }
     
     get area(){
-        const p = (this.a + this.b + this.c) / 2;
+        const p = this.perimeter / 2;
         return Number((Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c))).toFixed(3));
     }
 }
     function getTriangle(a,b,c) {
         try {
-            let triangle = new Triangle(a,b,c);                
-            return triangle;
+            return new Triangle(a,b,c);                
         } catch (error) {
             triangle = {
                 get area() {
@@ -51,4 +51,3 @@ class Triangle {
             return triangle;
         }
     }
-
